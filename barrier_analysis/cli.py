@@ -20,14 +20,11 @@ def cli(args=None):
         help='Show the conda-prefix-replacement version number and exit.',
         version="barrier_analysis %s" % __version__,
     )
-
-    args, unknown = p.parse_known_args(args)
-
     # do something with the sub commands
     sub_p = p.add_subparsers(help='sub-command help')
     # add show all sensors command
     subcmd1 = sub_p.add_parser('dash1', help='dashboard 1')
-    subcmd1.add_argument('--data-dir', type=str, required=False, help='the directory containing all the files')
+    subcmd1.add_argument('--data-dir', type=str, required=True, help='the directory containing all the files')
     subcmd1.set_defaults(func=dashboard1)
 
     # Now call the appropriate response.
